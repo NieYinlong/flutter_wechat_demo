@@ -1,0 +1,67 @@
+name: flutter_wechat_demo
+description: A new Flutter project.
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/ww_main_tab_contact_normal.png
+    - assets/images/ww_main_tab_contact_selected.png
+    - assets/images/ww_main_tab_find_normal.png
+    - assets/images/ww_main_tab_find_selected.png
+    - assets/images/ww_main_tab_me_normal.png
+    - assets/images/ww_main_tab_me_selected.png
+    - assets/images/ww_main_tab_ww_normal.png
+#  - assets/images/ww_main_tab_ww_selected.png
+#  - assets/images/ww_default_avatar.png
+#  - assets/images/ww_main_me_qrcode.png
+#  - assets/images/ww_main_me_gallary.png
+#  - assets/images/ww_main_me_safe.png
+#  - assets/images/ww_main_me_wallet.png
+#  - assets/images/ww_main_me_card.png
+#  - assets/images/ww_main_me_setting.png
+#  - images/ww_main_find_friend_circle.png
+#  - images/ww_main_find_scan.png
+#  - images/ww_main_find_shake.png
+#  - images/ww_main_find_nearby.png
+#  - images/ww_main_find_bottle.png
+#  - images/ww_main_find_mall.png
+#  - images/ww_main_find_game.png
+#  - images/ww_main_contact_new_friend.png
+#  - images/ww_main_contact_group.png
+#  - images/ww_main_contact_tag.png
+#  - images/ww_main_contact_public_number.png
+#  - images/ww_main_popu_add_group.png
+#  - images/ww_main_popu_add_friends.png
+#  - images/ww_main_popu_add_scan.png
+#  - images/ww_main_popu_add_fadeback.png
+  fonts:
+    - family: appIconFont
+      fonts:
+        - asset: assets/fonts/iconfont.ttf
