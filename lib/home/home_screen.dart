@@ -9,12 +9,13 @@ enum ActionItems {
   PAYMENT,
 }
 
+// 抽出一个类
 class NavigationIconView {
   final String _title; // 带下划线就是私有的
   final IconData _icon;
   final IconData _activeIcon;
   final BottomNavigationBarItem item;
-
+  // 构造函数, 用于创建 BottomNavigationBarItem 中的title, icon
   NavigationIconView({Key key, String title, IconData icon, IconData activeIcon}):
       _title = title,
       _icon = icon,
@@ -38,11 +39,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+  int _currnetIndex = 0;
   List<NavigationIconView> _navigationViews;
 
   void initState() {
     super.initState();
-    print(Constants.IconFontFamily);
     _navigationViews = [
       NavigationIconView(
           title: '微信',
@@ -111,16 +112,20 @@ class _HomeScreenState extends State<HomeScreen> {
       items: _navigationViews.map((NavigationIconView view){
         return view.item;
       }).toList(),
-      currentIndex: 0,
+      currentIndex: _currnetIndex,
       type: BottomNavigationBarType.fixed,
       onTap: (int index) {
         print('点击第$index个tab');
+        setState(() { // 重绘widget
+          _currnetIndex = index;
+        });
       },
     );
 
     return Scaffold(
       appBar: AppBar(
           title: Text('微信'),
+          elevation: 0.0, // 去掉navBar下面的阴影
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.search),
@@ -164,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: botNavBar,
+      bottomNavigationBar:botNavBar
     );
   }
 
