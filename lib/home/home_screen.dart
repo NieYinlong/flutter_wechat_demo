@@ -9,28 +9,18 @@ enum ActionItems {
   PAYMENT,
 }
 
-// 抽出一个类
+// 抽出一个类, 用于构造BottomNavigationBarItem
 class NavigationIconView {
-  final String _title; // 带下划线就是私有的
-  final IconData _icon;
-  final IconData _activeIcon;
   final BottomNavigationBarItem item;
   // 构造函数, 用于创建 BottomNavigationBarItem 中的title, icon
   NavigationIconView({Key key, String title, IconData icon, IconData activeIcon}):
-      _title = title,
-      _icon = icon,
-      _activeIcon = activeIcon,
       item = BottomNavigationBarItem(
-        icon: Icon(icon, color: AppColors.TabIconNormalColor),
-        activeIcon: Icon(activeIcon, color: AppColors.TabIconActiveColor),
-        title: Text(title, style: TextStyle(
-          fontSize: 14,
-          color: AppColors.TabIconNormalColor
-        )),
+        icon: Icon(icon),
+        activeIcon: Icon(activeIcon),
+        title: Text(title),
         backgroundColor: Colors.white
       );
 }
-
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -39,7 +29,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  int _currnetIndex = 0;
+  int _currentIndex = 0;
   List<NavigationIconView> _navigationViews;
 
   void initState() {
@@ -109,15 +99,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
 
     final BottomNavigationBar botNavBar = BottomNavigationBar(
+      fixedColor: AppColors.TabIconActiveColor,
       items: _navigationViews.map((NavigationIconView view){
         return view.item;
       }).toList(),
-      currentIndex: _currnetIndex,
+      currentIndex: _currentIndex,
       type: BottomNavigationBarType.fixed,
       onTap: (int index) {
         print('点击第$index个tab');
         setState(() { // 重绘widget
-          _currnetIndex = index;
+          _currentIndex = index;
         });
       },
     );
