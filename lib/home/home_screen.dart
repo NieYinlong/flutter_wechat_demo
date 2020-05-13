@@ -97,9 +97,9 @@ class _HomeScreenState extends State<HomeScreen> {
         Icon(IconData(
             iconName,
             fontFamily: Constants.IconFontFamily,
-        ), color: Colors.black54),
+        ), color: AppColors.AppBarPopupMenuColor),
         Container(width: 10,),
-        Text(title),
+        Text(title, style: TextStyle(color: AppColors.AppBarPopupMenuColor)),
       ],
     );
   }

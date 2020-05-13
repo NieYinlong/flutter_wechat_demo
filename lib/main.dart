@@ -8,6 +8,7 @@ void main() => runApp(
     title: '微信',
     theme: ThemeData.light().copyWith(
       primaryColor: AppColors.AppBarColor,
+      cardColor: AppColors.AppBarColor // 设置popMenu主题色
     ),
     home: HomeScreen(),
   )
