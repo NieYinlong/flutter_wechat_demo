@@ -1,6 +1,6 @@
 # flutter_wechat_demo
 
-A new Flutter project.
+高仿微信
 
 ## Getting Started
 
