@@ -29,8 +29,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+  PageController _pageController;
   int _currentIndex = 0;
   List<NavigationIconView> _navigationViews;
+  List<Widget> _pages;
 
   void initState() {
     super.initState();
@@ -80,6 +82,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
       ),
     ];
+    _pageController = PageController(initialPage: _currentIndex);
+    _pages = [
+      Container(color: Colors.red,),
+      Container(color: Colors.yellow,),
+      Container(color: Colors.greenAccent,),
+      Container(color: Colors.purple,),
+    ];
   }
 
   _buildPopupMenuItem(int iconName, String title) {
@@ -109,6 +118,8 @@ class _HomeScreenState extends State<HomeScreen> {
         print('点击第$index个tab');
         setState(() { // 重绘widget
           _currentIndex = index;
+          //_pageController.animateToPage(_currentIndex, duration: Duration(milliseconds: 200), curve: Curves.easeInOut);
+          _pageController.jumpToPage(_currentIndex);
         });
       },
     );
@@ -151,14 +162,18 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
       ),
-      body: Container(
-        color: Colors.white,
-        child: Column(
-          children: <Widget>[
-            Icon(IconData(0xe61b, fontFamily:Constants.IconFontFamily)),
-            Text('dat2a'),
-          ],
-        ),
+      body: PageView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return _pages[index];
+          },
+          controller: _pageController,
+        itemCount: _pages.length,
+        onPageChanged: (index) {
+            print(index);
+            setState(() {
+              _currentIndex = index;
+            });
+        },
       ),
       bottomNavigationBar:botNavBar
     );
