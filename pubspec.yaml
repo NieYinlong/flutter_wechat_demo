@@ -38,6 +38,7 @@ flutter:
     - assets/images/ww_main_tab_me_normal.png
     - assets/images/ww_main_tab_me_selected.png
     - assets/images/ww_main_tab_ww_normal.png
+    - assets/images/ww_main_contact_public_number.png
 #  - assets/images/ww_main_tab_ww_selected.png
 #  - assets/images/ww_default_avatar.png
 #  - assets/images/ww_main_me_qrcode.png
