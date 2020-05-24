@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 import '../consts.dart' show AppColors, AppStyles, Constants;
-import '../model/conversation.dart';
+import '../model/conversation.dart' show Conversation, mockConversations;
+
 /// 带下划线表示私有
 /// 定义listView中的item
 class _ConversationItem extends StatelessWidget {
+  const _ConversationItem({Key key, this.conversation})
+  : assert(conversation != null),
+  super(key: key);
+
+  final conversation;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10), // const代表常量, 这样写可以优化性能
-      color: AppColors.ConversationTitleItemBgColor,
+      padding: const EdgeInsets.all(10), // padding边框, const代表常量, 这样写可以优化性能
+      decoration: BoxDecoration(
+          color: AppColors.ConversationTitleItemBgColor,
+          border: Border(
+           bottom: BorderSide(color: AppColors.DivideColor, width: Constants.DivideWidth),
+         )
+      ),
       child: Row(
         // 横向布局: 主轴对齐方式, 左 -> 右边
         mainAxisAlignment: MainAxisAlignment.center,
@@ -24,14 +36,14 @@ class _ConversationItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('微信新闻', style: AppStyles.TitleStyle),
-                Text('这是新闻描述...', style: AppStyles.DesStyle,)
+                Text(conversation.title, style: AppStyles.TitleStyle),
+                Text(conversation.des, style: AppStyles.DesStyle,)
               ],
             ),
           ),
           Column(
             children: <Widget>[
-              Text('17:55', style: AppStyles.DesStyle,)
+              Text(conversation.createAt, style: AppStyles.DesStyle,)
             ],
           ),
           //
@@ -52,7 +64,7 @@ class _ConversationPageState extends State<ConversationPage> {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) {
-        return _ConversationItem();
+        return _ConversationItem(conversation: mockConversations[index]);
       },
       itemCount: mockConversations.length,
     );

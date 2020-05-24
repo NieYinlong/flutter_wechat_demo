@@ -29,16 +29,16 @@ class Conversation {
 const  List<Conversation> mockConversations = [
   const Conversation(
       avatar: 'https://randomuser.me/api/portraits/women/31.jpg',
-      title: '你好啊',
-      des: '',
+      title: '欧阳娜娜',
+      des: '今天晚上10点到家',
       createAt: '昨天',
       isMute: false,
       unreadMsgCount: 1,
    ),
   const Conversation(
     avatar: 'https://randomuser.me/api/portraits/women/27.jpg',
-    title: '很高兴认识你',
-    des: '这是描述',
+    title: '迪丽热巴',
+    des: '明天一起去逛该',
     createAt: '前天',
     isMute: false,
     unreadMsgCount: 0,
