@@ -13,6 +13,7 @@ class AppColors {
   static const DivideColor = Color(0xffd9d9d9);
   static const NotifyDotBgColor = Color(0xffff3e3e);
   static const NotifyDotTextColor = Color(0xffffffff);
+  static const DeviceInfoItemBg = Color(0xfff5f5f5);
 }
 
 class AppStyles {
@@ -30,10 +31,15 @@ class AppStyles {
     fontSize: 12,
     color: AppColors.NotifyDotTextColor
   );
+
+  static const DeviceInfoItemTextStyle = TextStyle(
+    fontSize: 13,
+    color: Color(0xff606062)
+  );
 }
 
 class Constants {
   static const IconFontFamily = "appIconFont";
   static const ConversationAvatarSize = 48.0;
-  static const DivideWidth = 1.0;
+  static const DivideWidth = 0.40;
 }

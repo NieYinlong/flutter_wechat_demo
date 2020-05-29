@@ -123,6 +123,35 @@ class _ConversationItem extends StatelessWidget {
   }
 }
 
+// 定义电脑端登录item
+class _DeviceInfoItem extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left:24, top:10, right:24, bottom:10),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            width: Constants.DivideWidth, color: AppColors.DivideColor,
+          )
+        )
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Icon(IconData(
+            0xe671,
+            fontFamily: Constants.IconFontFamily
+          ), size: 24),
+          SizedBox(width: 16),
+          Text('Mac微信已登录', style: AppStyles.DeviceInfoItemTextStyle)
+        ],
+      ),
+    );
+  }
+}
+
 
 class ConversationPage extends StatefulWidget {
   @override
@@ -134,6 +163,9 @@ class _ConversationPageState extends State<ConversationPage> {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) {
+        if(index == 0) {
+          return _DeviceInfoItem();
+        }
         return _ConversationItem(conversation: mockConversations[index]);
       },
       itemCount: mockConversations.length,
