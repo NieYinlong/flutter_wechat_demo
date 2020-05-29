@@ -11,6 +11,8 @@ class AppColors {
   static const TitleTextColor = Color(0xff353535);
   static const DesTextColor = Color(0xff9e9e9e);
   static const DivideColor = Color(0xffd9d9d9);
+  static const NotifyDotBgColor = Color(0xffff3e3e);
+  static const NotifyDotTextColor = Color(0xffffffff);
 }
 
 class AppStyles {
@@ -24,6 +26,10 @@ class AppStyles {
     color:  AppColors.DesTextColor
   );
 
+  static const UnreadMsgCountDotStyle = TextStyle(
+    fontSize: 12,
+    color: AppColors.NotifyDotTextColor
+  );
 }
 
 class Constants {

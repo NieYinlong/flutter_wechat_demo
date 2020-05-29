@@ -24,24 +24,41 @@ class Conversation {
   final bool isMute;
   final int unreadMsgCount; // 未读数量
   final bool displayDot;
+
+  bool isAvatarFromNet() {
+    if(this.avatar.indexOf('http') == 0 || this.avatar.indexOf('https') == 0){
+      return true;
+    }
+    return false;
+  }
+
 }
 
 const  List<Conversation> mockConversations = [
   const Conversation(
       avatar: 'https://randomuser.me/api/portraits/women/31.jpg',
-      title: '欧阳娜娜',
+      title: '欧阳娜娜22',
       des: '今天晚上10点到家',
       createAt: '昨天',
-      isMute: false,
-      unreadMsgCount: 1,
+      isMute: true,
+      unreadMsgCount: 0,
    ),
   const Conversation(
     avatar: 'https://randomuser.me/api/portraits/women/27.jpg',
     title: '迪丽热巴',
     des: '明天一起去逛该',
-    createAt: '前天',
+    createAt: '09:02',
     isMute: false,
-    unreadMsgCount: 0,
+    unreadMsgCount: 1,
+  ),
+
+  const Conversation(
+    avatar: 'assets/images/ww_main_contact_public_number.png',
+    title: '本地照片',
+    des: '这是本地照片',
+    createAt: '17:20',
+    isMute: true,
+    unreadMsgCount: 2,
   ),
 
 ];

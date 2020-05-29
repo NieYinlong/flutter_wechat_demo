@@ -31,37 +31,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/ww_main_tab_contact_normal.png
-    - assets/images/ww_main_tab_contact_selected.png
-    - assets/images/ww_main_tab_find_normal.png
-    - assets/images/ww_main_tab_find_selected.png
-    - assets/images/ww_main_tab_me_normal.png
-    - assets/images/ww_main_tab_me_selected.png
-    - assets/images/ww_main_tab_ww_normal.png
-    - assets/images/ww_main_contact_public_number.png
-#  - assets/images/ww_main_tab_ww_selected.png
-#  - assets/images/ww_default_avatar.png
-#  - assets/images/ww_main_me_qrcode.png
-#  - assets/images/ww_main_me_gallary.png
-#  - assets/images/ww_main_me_safe.png
-#  - assets/images/ww_main_me_wallet.png
-#  - assets/images/ww_main_me_card.png
-#  - assets/images/ww_main_me_setting.png
-#  - images/ww_main_find_friend_circle.png
-#  - images/ww_main_find_scan.png
-#  - images/ww_main_find_shake.png
-#  - images/ww_main_find_nearby.png
-#  - images/ww_main_find_bottle.png
-#  - images/ww_main_find_mall.png
-#  - images/ww_main_find_game.png
-#  - images/ww_main_contact_new_friend.png
-#  - images/ww_main_contact_group.png
-#  - images/ww_main_contact_tag.png
-#  - images/ww_main_contact_public_number.png
-#  - images/ww_main_popu_add_group.png
-#  - images/ww_main_popu_add_friends.png
-#  - images/ww_main_popu_add_scan.png
-#  - images/ww_main_popu_add_fadeback.png
+    - assets/images/
+#    - assets/images/   后面不用写具体的, 模糊匹配
+#    - assets/images/ww_main_tab_contact_normal.png
+
   fonts:
     - family: appIconFont
       fonts:

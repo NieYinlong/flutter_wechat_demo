@@ -13,6 +13,83 @@ class _ConversationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // 根据图片的获取方式初始化头像组件
+    Widget avatarWidget;
+    if(conversation.isAvatarFromNet()) {
+      avatarWidget = Image.network(conversation.avatar,
+        width: Constants.ConversationAvatarSize,
+        height: Constants.ConversationAvatarSize
+      );
+    } else {
+      avatarWidget = Image.asset(conversation.avatar,
+          width: Constants.ConversationAvatarSize,
+          height: Constants.ConversationAvatarSize
+      );
+    }
+    avatarWidget = Image.asset(conversation.avatar,
+        width: Constants.ConversationAvatarSize,
+        height: Constants.ConversationAvatarSize
+    );
+
+    // 未读消息角标
+    Widget unreadMsgCountText = Container(
+      width: 20.0,
+      height: 20.0,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0 / 2),
+        color: AppColors.NotifyDotBgColor,
+      ),
+      child: Text(conversation.unreadMsgCount.toString(), style: AppStyles.UnreadMsgCountDotStyle),
+    );
+
+
+    // 带角标的头像
+    Widget avatarContainer;
+    if(conversation.unreadMsgCount > 0) {
+      // Stack 堆栈布局, 元素可以重叠
+      avatarContainer = Stack(
+        overflow: Overflow.visible, // 超出范围继续显示
+        children: <Widget>[
+          avatarWidget,
+          Positioned(
+            right: -7,
+            top: -7,
+            child: unreadMsgCountText,
+          )
+        ],
+      );
+    } else {
+      avatarContainer = avatarWidget;
+    }
+
+    // 勿扰模式图标
+    Widget muteIcon = Icon(
+        IconData(0xe60f, fontFamily: Constants.IconFontFamily),
+        color: Color(0xff999999),
+        size: 18
+    );
+
+    // 透明的
+    Widget transparentMuteIcon = Icon(
+        IconData(0xe60f, fontFamily: Constants.IconFontFamily),
+        color: Colors.transparent,
+        size: 18
+    );
+
+    // 组件数组
+    var _rightArea = <Widget>[
+      Text(conversation.createAt, style: AppStyles.DesStyle,),
+      SizedBox(height: 10) // 间隔
+    ];
+    // 如果是勿扰模式则添加勿扰图标widget
+    if(conversation.isMute) {
+      _rightArea.add(muteIcon);
+    } else {
+      _rightArea.add(transparentMuteIcon);
+    }
+
     return Container(
       padding: const EdgeInsets.all(10), // padding边框, const代表常量, 这样写可以优化性能
       decoration: BoxDecoration(
@@ -25,11 +102,7 @@ class _ConversationItem extends StatelessWidget {
         // 横向布局: 主轴对齐方式, 左 -> 右边
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.asset(
-            'assets/images/ww_main_contact_public_number.png',
-            width: Constants.ConversationAvatarSize,
-            height: Constants.ConversationAvatarSize,
-          ),
+          avatarContainer,
           Container(width: 10), // 间隔作用
           // 中间title 和 des, Expanded自动撑起
           Expanded(
@@ -41,12 +114,9 @@ class _ConversationItem extends StatelessWidget {
               ],
             ),
           ),
-          Column(
-            children: <Widget>[
-              Text(conversation.createAt, style: AppStyles.DesStyle,)
-            ],
-          ),
-          //
+        Column(
+          children: _rightArea,
+        ), //
         ],
       ),
     );
