@@ -1,6 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import '../consts.dart' show AppColors;
 
+// 外部登录设备枚举
+enum OutLoginDevice{
+  MAC,
+  WIN
+}
+
 class Conversation {
   const Conversation({
     @required this.avatar,

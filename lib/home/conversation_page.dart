@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../consts.dart' show AppColors, AppStyles, Constants;
-import '../model/conversation.dart' show Conversation, mockConversations;
+import '../model/conversation.dart' show Conversation, mockConversations, OutLoginDevice;
+
+
 
 /// 带下划线表示私有
 /// 定义listView中的item
@@ -124,7 +126,23 @@ class _ConversationItem extends StatelessWidget {
 }
 
 // 定义电脑端登录item
-class _DeviceInfoItem extends StatelessWidget{
+class _DeviceInfoItem extends StatelessWidget {
+
+  const _DeviceInfoItem({
+    this.device = OutLoginDevice.MAC,
+  }) : assert(device != null); // assert断言 device初始化时不能为空
+
+  final OutLoginDevice device;
+
+  // get方法
+  int get iconName {
+    return device == OutLoginDevice.MAC ? 0xe671: 0xe671;
+  }
+
+  String get deviceName {
+    return device == OutLoginDevice.MAC ? 'MC' : 'Windows';
+}
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -141,11 +159,11 @@ class _DeviceInfoItem extends StatelessWidget{
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Icon(IconData(
-            0xe671,
+            this.iconName,
             fontFamily: Constants.IconFontFamily
           ), size: 24),
           SizedBox(width: 16),
-          Text('Mac微信已登录', style: AppStyles.DeviceInfoItemTextStyle)
+          Text('$deviceName微信已登录', style: AppStyles.DeviceInfoItemTextStyle)
         ],
       ),
     );
